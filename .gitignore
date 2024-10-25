@@ -1,0 +1,3 @@
+.env
+/bin
+/pkg/topic_v1/*
