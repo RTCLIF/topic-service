@@ -38,8 +38,8 @@ message GetTopicRs {
 
 message Topic {
     string id = 1;
-    string title = 2;
-    string description = 3;
-    string status = 4;
-    google.protobuf.Timestamp created_at = 5;
+    TopicInfo info = 2;
+    string status = 3;
+    google.protobuf.Timestamp created_at = 4;
+    google.protobuf.Timestamp updated_at = 5;
 }

@@ -1,40 +1,16 @@
 package main
 
 import (
-	"context"
 	"log"
 	"net"
 
+	"github.com/Bulat147/rtclif-topic-service/internal/api/topic"
+	service "github.com/Bulat147/rtclif-topic-service/internal/service/topic"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/reflection"
 
 	dep "github.com/Bulat147/rtclif-topic-service/pkg/topic_v1"
-	"github.com/google/uuid"
-	"google.golang.org/protobuf/types/known/timestamppb"
 )
-
-type MyGrpcServer struct {
-	dep.UnimplementedTopicV1Server
-}
-
-func (MyGrpcServer) CreateTopic(cnt context.Context, rq *dep.CreateTopicRq) (rs *dep.CreateTopicRs, e error) {
-	id, _ := uuid.NewRandom()
-	rs = &dep.CreateTopicRs{Id: id.String()}
-
-	return rs, nil
-}
-
-func (MyGrpcServer) GetTopic(cnt context.Context, rq *dep.GetTopicRq) (rs *dep.GetTopicRs, e error) {
-	id, _ := uuid.NewRandom()
-	rs = &dep.GetTopicRs{Topic: &dep.Topic{
-		Id:          id.String(),
-		Title:       "Random",
-		Description: "Random Text",
-		Status:      "Open",
-		CreatedAt:   timestamppb.Now(),
-	}}
-	return rs, nil
-}
 
 func main() {
 
@@ -47,7 +23,9 @@ func main() {
 	grpcServer := grpc.NewServer()
 	reflection.Register(grpcServer)
 
-	dep.RegisterTopicV1Server(grpcServer, &MyGrpcServer{})
+	topicService := service.NewTopicServiceImpl()
+
+	dep.RegisterTopicV1Server(grpcServer, topic.NewTopicServer(topicService))
 
 	log.Println("grpc server is running on port 50051")
 	if err := grpcServer.Serve(lis); err != nil {
