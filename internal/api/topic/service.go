@@ -1,8 +1,8 @@
 package topic
 
 import (
-	"github.com/Bulat147/rtclif-topic-service/internal/service"
-	pb "github.com/Bulat147/rtclif-topic-service/pkg/topic_v1"
+	"github.com/RTCLIF/topic-service/internal/service"
+	pb "github.com/RTCLIF/topic-service/pkg/topic_v1"
 )
 
 // здесь можно объявить интерфейс сервиса

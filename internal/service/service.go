@@ -3,7 +3,7 @@ package service
 import (
 	"context"
 
-	"github.com/Bulat147/rtclif-topic-service/internal/model"
+	"github.com/RTCLIF/topic-service/internal/model"
 )
 
 type TopicService interface {

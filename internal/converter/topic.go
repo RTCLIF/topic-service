@@ -4,8 +4,8 @@ package converter
 // а иначе придется удлиннять имена (указывать не toTopic..., а toRepoTopic..., toServiceTopic... и т.д.)
 
 import (
-	"github.com/Bulat147/rtclif-topic-service/internal/model"
-	pb "github.com/Bulat147/rtclif-topic-service/pkg/topic_v1"
+	"github.com/RTCLIF/topic-service/internal/model"
+	pb "github.com/RTCLIF/topic-service/pkg/topic_v1"
 	"google.golang.org/protobuf/types/known/timestamppb"
 )
 

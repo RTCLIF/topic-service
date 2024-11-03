@@ -1,14 +1,14 @@
 package topic
 
-import "github.com/Bulat147/rtclif-topic-service/internal/service"
+import "github.com/RTCLIF/topic-service/internal/service"
 
 // здесь можно объявить интерфейс репозитория, а не в модуле репозитория
 
-var _ service.TopicService = (*TopicServiceImpl)(nil) // эта штука показывает, реализует ли наша структура нужный интерфейс
+var _ service.TopicService = (*topicServiceImpl)(nil) // эта штука показывает, реализует ли наша структура нужный интерфейс
 
-type TopicServiceImpl struct {
+type topicServiceImpl struct {
 }
 
-func NewTopicServiceImpl() *TopicServiceImpl {
-	return &TopicServiceImpl{}
+func NewTopicServiceImpl() *topicServiceImpl {
+	return &topicServiceImpl{}
 }
