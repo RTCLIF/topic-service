@@ -25,7 +25,7 @@ func (s *serviceProvider) GrpcConfig() config.GRPCConfig {
 	if s.grpcConfig == nil {
 		cfg, err := config.NewGrpcConfig()
 		if err != nil {
-			log.Fatalf("can't initialize grpcConfig: %s", err)
+			log.Fatalf("failed to initialize grpcConfig: %s", err)
 		}
 
 		s.grpcConfig = cfg
